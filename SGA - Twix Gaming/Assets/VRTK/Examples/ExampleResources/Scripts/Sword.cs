@@ -35,6 +35,7 @@
 
         private void OnCollisionEnter(Collision collision)
         {
+            Debug.Log("Colliding with " + collision.gameObject.name);
             if (VRTK_ControllerReference.IsValid(controllerReference) && IsGrabbed())
             {
                 collisionForce = VRTK_DeviceFinder.GetControllerVelocity(controllerReference).magnitude * impactMagnifier;
