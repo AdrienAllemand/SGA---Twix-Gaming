@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 23025257633853720}
   - component: {fileID: 95995245688045056}
   m_Layer: 0
-  m_Name: epeeSparkling
+  m_Name: epeeSparklingOld
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
