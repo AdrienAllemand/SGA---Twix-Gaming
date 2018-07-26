@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a980d124d32b8b2488d614c0845ab170
+guid: 23e91afffcecc3743a6962042bfc995d
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -56,9 +56,10 @@ ModelImporter:
     4300008: Body
     4300010: Feets_001
     7400000: Default Take
-    7400002: Walk_Ok
-    7400004: Attack
-    7400006: Die
+    7400002: Attack
+    7400004: Die
+    7400006: Idle
+    7400008: Walk_Ok
     9500000: //RootNode
     13700000: Body
     13700002: Feets_000
@@ -99,7 +100,7 @@ ModelImporter:
       name: Default Take
       takeName: Default Take
       firstFrame: -1
-      lastFrame: -0.10000001
+      lastFrame: 39
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -147,11 +148,10 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.48441806
+      - time: 0.4964065
         functionName: GiveDamage
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 0a3def5cb6a677d47b11faa2a3077572,
-          type: 3}
+        objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
@@ -171,6 +171,34 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle
+      takeName: Idle
+      firstFrame: -1
+      lastFrame: 0
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

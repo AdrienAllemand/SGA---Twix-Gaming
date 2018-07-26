@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-
+[RequireComponent(typeof(Destructible))]
 public class DefendMe : MonoBehaviour {
 
     Destructible destructible;
@@ -12,6 +12,11 @@ public class DefendMe : MonoBehaviour {
     private void Start()
     {
         destructible = GetComponent<Destructible>();
+    }
+
+    public Destructible GetDestructible()
+    {
+        return destructible;
     }
 
 }
