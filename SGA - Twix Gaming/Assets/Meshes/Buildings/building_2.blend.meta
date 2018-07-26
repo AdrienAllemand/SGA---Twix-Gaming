@@ -1,81 +1,17 @@
 fileFormatVersion: 2
-guid: b7bb710cdcccd4d4f9d69eeaea8ebf73
+guid: 660bc0c0278f05549affd6c7d2843bce
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Armature.003
-    100004: Body
-    100006: Bone
-    100008: Bone.001
-    100010: Bone.002
-    100012: Bone.002_end
-    100014: Bone.003
-    100016: Bone.004
-    100018: Bone.005
-    100020: Bone.005_end
-    100022: Bone.006
-    100024: Bone.007
-    100026: Bone.008
-    100028: Bone.008_end
-    100030: Bone.009
-    100032: Bone.010
-    100034: Bone.011
-    100036: Bone.011_end
-    100038: Bone.012
-    100040: Bone.012_end
-    100042: Feets.000
-    100044: Feets.001
-    100046: Feets.002
-    100048: Feets.003
-    100050: Feets.004
     400000: //RootNode
-    400002: Armature.003
-    400004: Body
-    400006: Bone
-    400008: Bone.001
-    400010: Bone.002
-    400012: Bone.002_end
-    400014: Bone.003
-    400016: Bone.004
-    400018: Bone.005
-    400020: Bone.005_end
-    400022: Bone.006
-    400024: Bone.007
-    400026: Bone.008
-    400028: Bone.008_end
-    400030: Bone.009
-    400032: Bone.010
-    400034: Bone.011
-    400036: Bone.011_end
-    400038: Bone.012
-    400040: Bone.012_end
-    400042: Feets.000
-    400044: Feets.001
-    400046: Feets.002
-    400048: Feets.003
-    400050: Feets.004
-    2100000: Material
-    2100002: Material.002
-    2100004: Material.001
-    2100006: Material.003
-    2300000: Body
-    3300000: Body
-    4300000: Body
-    4300002: Feets.004
-    4300004: Feets.003
-    4300006: Feets.002
-    4300008: Feets.000
-    4300010: Feets.001
-    7400000: Armature.003|walk.001
-    7400002: Armature.003|Walk_Ok
+    2100000: Building
+    2100002: Material
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Cube
+    7400000: Default Take
     9500000: //RootNode
-    13700000: Feets.000
-    13700002: Feets.001
-    13700004: Feets.002
-    13700006: Feets.003
-    13700008: Feets.004
-    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -127,7 +63,7 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.01
+    previousCalculatedGlobalScale: 1
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
