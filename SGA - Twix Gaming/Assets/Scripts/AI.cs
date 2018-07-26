@@ -7,8 +7,7 @@ public class AI : MonoBehaviour {
 
     [SerializeField]
     public GameObject alienPrefab;
-
-    public Transform player;
+    public DefendMe[] defend;
 
     private void Start() {
         StartCoroutine(spawnEnemy());
@@ -24,7 +23,9 @@ public class AI : MonoBehaviour {
 
             GameObject alien = Instantiate(alienPrefab, pos, transform.rotation) as GameObject;
             NavMeshAgent nma = alien.GetComponent<NavMeshAgent>();
-            nma.destination = player.position;
+            alienAI alienAI = alien.GetComponent<alienAI>();
+            int i = Random.Range(0, defend.Length);
+            nma.destination = defend[i].transform.position;
         }
     }
 }

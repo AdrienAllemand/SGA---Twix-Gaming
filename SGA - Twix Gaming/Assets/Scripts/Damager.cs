@@ -5,6 +5,8 @@ using UnityEngine;
 public class Damager : MonoBehaviour {
 
     [SerializeField]
+    private int layerNo = 0;
+    [SerializeField]
     private int damage = 100;
 
     public int getDamage() {
@@ -13,7 +15,7 @@ public class Damager : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision) {
         Destructible destructible;
-        if((destructible = collision.collider.GetComponent<Destructible>()) != null) {
+        if((destructible = collision.collider.GetComponent<Destructible>()) != null && destructible.layerNo == layerNo) {
 
             Debug.Log("Hit sth destructible");
             destructible.TakeDamage(this, collision.contacts[0]);
