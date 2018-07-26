@@ -21,13 +21,13 @@ GameObject:
   - component: {fileID: 4996049318523756}
   - component: {fileID: 33731915898252906}
   - component: {fileID: 23163993511642856}
-  - component: {fileID: 95812523274339852}
+  - component: {fileID: 65160449121765708}
   m_Layer: 0
   m_Name: Pillar5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4996049318523756
 Transform:
@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1696170009373124}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 57.839783, y: 0, z: 37.399048}
+  m_LocalPosition: {x: 30.265198, y: 1.2271919, z: 119.710175}
   m_LocalScale: {x: 2.476486, y: 2.476486, z: 1.4628798}
   m_Children: []
   m_Father: {fileID: 0}
@@ -85,21 +85,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1696170009373124}
   m_Mesh: {fileID: 4300000, guid: c0a181b92ba95ac40859cb62bdd307c1, type: 3}
---- !u!95 &95812523274339852
-Animator:
-  serializedVersion: 3
+--- !u!65 &65160449121765708
+BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1696170009373124}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: c0a181b92ba95ac40859cb62bdd307c1, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  serializedVersion: 2
+  m_Size: {x: 2.004966, y: 2.0001285, z: 8.662231}
+  m_Center: {x: 0.0024830103, y: 0.0000640154, z: 4.3311157}

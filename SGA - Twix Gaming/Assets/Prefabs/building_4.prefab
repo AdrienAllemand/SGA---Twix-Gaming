@@ -37,12 +37,13 @@ GameObject:
   - component: {fileID: 4690153680324108}
   - component: {fileID: 33157927030760530}
   - component: {fileID: 23176596816509790}
+  - component: {fileID: 65749123437576552}
   m_Layer: 0
   m_Name: Roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1844747585119246
 GameObject:
@@ -54,12 +55,13 @@ GameObject:
   - component: {fileID: 4372994456708874}
   - component: {fileID: 33362423993592462}
   - component: {fileID: 23578489797745278}
+  - component: {fileID: 65197551561212498}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4372994456708874
 Transform:
@@ -81,7 +83,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1212305165722042}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5541077, y: 0.0000038146973, z: 97.20761}
+  m_LocalPosition: {x: 95.52551, y: 0, z: 21.385925}
   m_LocalScale: {x: 8.591423, y: 8.591423, z: 8.591423}
   m_Children:
   - {fileID: 4372994456708874}
@@ -188,6 +190,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1844747585119246}
   m_Mesh: {fileID: 4300002, guid: 185fa46039d8c504ea8c484847d10e5d, type: 3}
+--- !u!65 &65197551561212498
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1844747585119246}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2.0000005, z: 2.0000005}
+  m_Center: {x: 0, y: -0.00000023841858, z: 1.0000002}
+--- !u!65 &65749123437576552
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1261386196027386}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2.0000005, z: 0.8829262}
+  m_Center: {x: 0, y: -0.00000023841858, z: 0.4414631}
 --- !u!95 &95525033257894296
 Animator:
   serializedVersion: 3
