@@ -81,8 +81,8 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _CellColor: {r: 0, g: 0.22793001, b: 0.23529412, a: 1}
+    - _CellColor: {r: 0.13207549, g: 0, b: 0.03810741, a: 1}
     - _Color: {r: 0.935151, g: 0.9705882, b: 0.3282872, a: 0}
-    - _EmissionColor: {r: 1, g: 0, b: 0.91372555, a: 1}
-    - _LineColor: {r: 1, g: 0, b: 0.91517925, a: 1}
+    - _EmissionColor: {r: 0, g: 1, b: 0.9604411, a: 1}
+    - _LineColor: {r: 0.54741704, g: 0.0039215684, b: 1, a: 1}
     - _SelectedColor: {r: 0.1586206, g: 1, b: 0, a: 1}
