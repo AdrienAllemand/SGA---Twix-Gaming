@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ADR_MainScreen : MonoBehaviour {
 
-    public ADR_LevelManager levelManager;
+    //public ADR_LevelManager levelManager;
     public Canvas canvas;
     public Text mainScreen;
     public Text restartButtonText;
@@ -23,7 +23,7 @@ public class ADR_MainScreen : MonoBehaviour {
     }
 
     public void Restart() {
-        levelManager.Reset();
+        //levelManager.Reset();
         canvas.gameObject.SetActive(false);
     }
 

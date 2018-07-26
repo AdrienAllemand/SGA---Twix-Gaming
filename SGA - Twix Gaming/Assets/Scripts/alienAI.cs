@@ -45,6 +45,6 @@ public class alienAI : MonoBehaviour {
 
     public void GiveDamage()
     {
-        defendMe.takeDamage(damage);
+        //defendMe.takeDamage(damage);
     }
 }
