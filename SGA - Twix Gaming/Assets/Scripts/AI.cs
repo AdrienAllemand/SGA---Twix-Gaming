@@ -25,6 +25,7 @@ public class AI : MonoBehaviour {
             NavMeshAgent nma = alien.GetComponent<NavMeshAgent>();
             alienAI alienAI = alien.GetComponent<alienAI>();
             int i = Random.Range(0, defend.Length);
+            alienAI.defendMe = defend[i];
             nma.destination = defend[i].transform.position;
         }
     }

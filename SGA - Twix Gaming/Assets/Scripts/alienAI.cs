@@ -5,20 +5,29 @@ using UnityEngine.AI;
 
 public class alienAI : MonoBehaviour {
 
-    NavMeshAgent nav;
-    Destructible destructible;
-    Animator animator;
+    [SerializeField] private NavMeshAgent nav;
+    [SerializeField] private Destructible destructible;
+    [SerializeField] private Damager damager;
+    [SerializeField] private Transform footTip;
+    [SerializeField] private Animator animator;
     Rigidbody rb;
     [SerializeField] private float explosion = 1500f;
     [SerializeField] private int damage = 5;
-    [SerializeField] private float breakDistance = 1f;
+    [SerializeField] private float breakDistance = 1.5f;
     bool walking = true;
-    DefendMe defendMe;
+    [SerializeField] public DefendMe defendMe;
+    [SerializeField] private float attackCooldown;
+    float attackTimer;
+    [SerializeField] float distance = 1000;
 
     private void Start() {
         nav = GetComponent<NavMeshAgent>();
         destructible = GetComponent<Destructible>();
-        animator = GetComponent<Animator>();
+        damager = GetComponent<Damager>();
+        if(animator == null)
+        {
+            animator = GetComponent<Animator>();
+        }
         rb = GetComponent<Rigidbody>();
 
         destructible.onDeath.AddListener(Death);
@@ -26,10 +35,23 @@ public class alienAI : MonoBehaviour {
 
     public void Update()
     {
-        if(walking && (nav.destination - transform.position).magnitude <= breakDistance)
+
+        attackTimer += Time.deltaTime;
+        distance = (nav.destination - transform.position).magnitude;
+        if (distance <= breakDistance)
         {
-            walking = false;
-            animator.SetBool("Walk", false);
+            if (walking)
+            {
+                walking = false;
+                animator.SetBool("Walk", false);
+                nav.isStopped = true;
+            }
+
+            if(attackTimer >= attackCooldown)
+            {
+                attackTimer = 0;
+                animator.SetTrigger("Attack");
+            }
         }
     }
 
@@ -45,6 +67,6 @@ public class alienAI : MonoBehaviour {
 
     public void GiveDamage()
     {
-        //defendMe.takeDamage(damage);
+        defendMe.GetDestructible().TakeDamage(damager, footTip.position);
     }
 }
