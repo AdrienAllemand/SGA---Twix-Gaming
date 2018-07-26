@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using VRTK.Examples;
 
 [SerializeField]
 public class OnTakeDamage : UnityEvent<Destructible, Damager> {
@@ -28,6 +29,7 @@ public class Destructible : MonoBehaviour {
     [SerializeField] private GameObject deathPrefab;
     [SerializeField] private bool destroyOnDeath = false;
     [SerializeField] private float destroyOnDeathDelay = 0;
+    [SerializeField] private float explosion = 1500f;
 
     void Start() {
         GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.Continuous;
@@ -49,14 +51,13 @@ public class Destructible : MonoBehaviour {
             }
 
             if (destroyOnDeath) {
+                Rigidbody rb = this.gameObject.GetComponent<Rigidbody>();
+                rb.useGravity = true;
+                rb.AddExplosionForce(explosion,damager.gameObject.transform.position,2f,1f);
                 Destroy(this.gameObject, destroyOnDeathDelay);
             }
 
         }
     }
-
-
-    public void OnCollisionEnter(Collision collision) {
-        Debug.Log("Was hit by : " + collision.gameObject.name);
-    }
+    
 }

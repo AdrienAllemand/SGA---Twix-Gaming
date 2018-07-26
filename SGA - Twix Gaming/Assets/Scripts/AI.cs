@@ -17,8 +17,10 @@ public class AI : MonoBehaviour {
     IEnumerator spawnEnemy() {
         while (true) {
             yield return new WaitForSeconds(2);
-            Vector3 pos = Random.onUnitSphere * 30;
+            Vector3 pos = Random.onUnitSphere;
             pos.y = 0;
+            pos.Normalize();
+            pos *= 15;
 
             GameObject alien = Instantiate(alienPrefab, pos, transform.rotation) as GameObject;
             NavMeshAgent nma = alien.GetComponent<NavMeshAgent>();
