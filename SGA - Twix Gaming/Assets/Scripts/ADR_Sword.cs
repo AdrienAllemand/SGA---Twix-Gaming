@@ -5,10 +5,17 @@ using UnityEngine;
 public class ADR_Sword : MonoBehaviour {
 
     Damager damager;
+    Vector3 oldpos;
+    public MeshRenderer mr;
 
     private void Start()
     {
         damager = GetComponent<Damager>();
+        oldpos = transform.position;
+    }
+
+    private void Update() {
+
     }
 
     void OnCollisionEnter(Collision collision)
@@ -19,6 +26,10 @@ public class ADR_Sword : MonoBehaviour {
 
             Debug.Log("Hit sth destructible");
             destructible.TakeDamage(damager, collision.contacts[0]);
+            alienAI al = null;
+            if((al = destructible.GetComponent<alienAI>()) != null) {
+                al.Explode(collision);
+            }
         }
         else
         {

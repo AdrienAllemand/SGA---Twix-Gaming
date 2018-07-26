@@ -11,5 +11,4 @@ public class Damager : MonoBehaviour {
     public int getDamage() {
         return damage;
     }
-
 }
