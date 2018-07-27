@@ -54,6 +54,10 @@ public class alienAI : MonoBehaviour {
                     attackTimer = 0;
                     animator.SetTrigger("Attack");
                 }
+            } else {
+                walking = true;
+                animator.SetBool("Walk", true);
+                nav.isStopped = false;
             }
         }
     }
