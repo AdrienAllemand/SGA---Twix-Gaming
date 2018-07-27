@@ -27,7 +27,7 @@ MonoBehaviour:
   fog:
     m_Enabled: 0
     m_Settings:
-      excludeSkybox: 1
+      excludeSkybox: 0
   antialiasing:
     m_Enabled: 0
     m_Settings:
@@ -42,7 +42,7 @@ MonoBehaviour:
   ambientOcclusion:
     m_Enabled: 1
     m_Settings:
-      intensity: 1
+      intensity: 1.19
       radius: 0.3
       sampleCount: 10
       downsampling: 1
@@ -100,10 +100,10 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       bloom:
-        intensity: 10
-        threshold: 1.1
-        softKnee: 0.356
-        radius: 4
+        intensity: 2
+        threshold: 0.94
+        softKnee: 0.449
+        radius: 1.29
         antiFlicker: 0
       lensDirt:
         texture: {fileID: 0}
@@ -120,7 +120,7 @@ MonoBehaviour:
         neutralWhiteLevel: 5.3
         neutralWhiteClip: 10
       basic:
-        postExposure: -0.57
+        postExposure: 1.2
         temperature: 10
         tint: 0
         hueShift: 0
@@ -138,9 +138,9 @@ MonoBehaviour:
           power: {r: 1, g: 1, b: 1, a: 0}
           offset: {r: 1, g: 1, b: 1, a: 0}
         linear:
-          lift: {r: 0.9670183, g: 1, b: 0.97212404, a: 0}
-          gamma: {r: 1, g: 0.97798395, b: 0.98474824, a: 0}
-          gain: {r: 1, g: 0.9864684, b: 0.99978197, a: 0}
+          lift: {r: 0.97610843, g: 1, b: 0.98843026, a: 0}
+          gamma: {r: 1, g: 0.9847481, b: 0.977984, a: 0}
+          gain: {r: 0.98646915, g: 0.98668593, b: 1, a: 0}
       curves:
         master:
           curve:
@@ -305,10 +305,10 @@ MonoBehaviour:
       lut: {fileID: 0}
       contribution: 1
   chromaticAberration:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       spectralTexture: {fileID: 0}
-      intensity: 0.1
+      intensity: 0.423
   grain:
     m_Enabled: 0
     m_Settings:

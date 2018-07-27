@@ -774,8 +774,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1620253246391654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.54, y: 0, z: 7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.9578229, y: 0.14, z: 2.6639957}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 4492310552539882}
   m_Father: {fileID: 0}
@@ -823,7 +823,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 7159bad259c244e449d04f1f5e0b6656, type: 3}
+  - {fileID: 2100000, guid: 24572e92fcda90a4089c843f0f2dcd44, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -900,8 +900,8 @@ MonoBehaviour:
   hp: 100
   hitPrefab: {fileID: 0}
   deathPrefab: {fileID: 0}
-  destroyOnDeath: 0
-  destroyOnDeathDelay: 0
+  destroyOnDeath: 1
+  destroyOnDeathDelay: 5
 --- !u!114 &114616226448401462
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -929,12 +929,15 @@ MonoBehaviour:
   damager: {fileID: 0}
   footTip: {fileID: 4301943097689888}
   animator: {fileID: 95295503750008346}
-  explosion: 1500
+  explosionForce: 1500
+  explosionRadius: 2
+  explosionUpwardModifier: 2
   damage: 5
   breakDistance: 1.6
   defendMe: {fileID: 0}
   attackCooldown: 3
   distance: 1000
+  score: {fileID: 0}
 --- !u!114 &114800940343062944
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -958,8 +961,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.26
-  m_Center: {x: 0, y: 0.3, z: 0}
+  m_Radius: 0.16163678
+  m_Center: {x: -0.00060387456, y: 0.28899202, z: 0}
 --- !u!137 &137449440951475970
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -975,7 +978,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100006, guid: 7159bad259c244e449d04f1f5e0b6656, type: 3}
+  - {fileID: 2100000, guid: 89cac9cda0a07cc4da54080c2ef47aad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1035,7 +1038,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100002, guid: 7159bad259c244e449d04f1f5e0b6656, type: 3}
+  - {fileID: 2100000, guid: 89cac9cda0a07cc4da54080c2ef47aad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1095,7 +1098,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100004, guid: 7159bad259c244e449d04f1f5e0b6656, type: 3}
+  - {fileID: 2100000, guid: 89cac9cda0a07cc4da54080c2ef47aad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1215,7 +1218,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 7159bad259c244e449d04f1f5e0b6656, type: 3}
+  - {fileID: 2100000, guid: 89cac9cda0a07cc4da54080c2ef47aad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1269,7 +1272,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2
+  m_Speed: 1.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

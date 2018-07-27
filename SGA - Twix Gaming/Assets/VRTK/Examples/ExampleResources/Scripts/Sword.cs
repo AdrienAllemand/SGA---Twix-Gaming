@@ -47,5 +47,14 @@
                 collisionForce = collision.relativeVelocity.magnitude * impactMagnifier;
             }
         }
+
+        public Vector3 GetVelocity() {
+            if (VRTK_ControllerReference.IsValid(controllerReference) && IsGrabbed()) {
+                return VRTK_DeviceFinder.GetControllerVelocity(controllerReference);
+            }
+            else {
+                return Vector3.zero;
+            }
+        }
     }
 }
