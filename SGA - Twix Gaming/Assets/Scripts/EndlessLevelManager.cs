@@ -60,7 +60,7 @@ public class EndlessLevelManager : MonoBehaviour {
         }
         onLevelBegin.Invoke();
         score.InitScore();
-        targetGenerator.InitTargets();
+        targetGenerator.InitTargets(defend.GetDestructible());
     }
     
 

@@ -12,11 +12,13 @@ public class TargetsGenerator : MonoBehaviour {
     [SerializeField] private float timeToDelaySpawn = 3;
     [SerializeField] public int targetsToSpawn = 3;
     [SerializeField] public float targetsScale = 1;
+    [SerializeField] public Destructible attackTarget;
 
     private List<Target> targets;
     
-    public void InitTargets() {
-        for(int i = 0; i  < targetsToSpawn; i++) {
+    public void InitTargets(Destructible attackTarget) {
+        this.attackTarget = attackTarget;
+        for (int i = 0; i  < targetsToSpawn; i++) {
             SpawnTarget();
         }
     }
@@ -31,6 +33,7 @@ public class TargetsGenerator : MonoBehaviour {
 
         Target t = targetObj.GetComponent<Target>();
         t.s = score;
+        t.attack = attackTarget;
         t.onTargetHit.AddListener(CoroutineCall);
         
     }
