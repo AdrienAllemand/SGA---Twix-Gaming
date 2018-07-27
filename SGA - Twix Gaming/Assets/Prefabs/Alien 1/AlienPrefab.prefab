@@ -895,6 +895,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layerNo: 1
+  onSimpleDeath:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   progressBarre: {fileID: 0}
   maxhp: 100
   hp: 100
@@ -933,11 +938,17 @@ MonoBehaviour:
   explosionRadius: 2
   explosionUpwardModifier: 2
   damage: 5
-  breakDistance: 1.6
+  breakDistance: 2
   defendMe: {fileID: 0}
   attackCooldown: 3
   distance: 1000
+  isdead: 0
   score: {fileID: 0}
+  DestroyEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114800940343062944
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1276,7 +1287,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

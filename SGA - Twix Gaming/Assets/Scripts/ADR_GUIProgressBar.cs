@@ -11,6 +11,6 @@ public class ADR_GUIProgressBar : MonoBehaviour {
     public void setProgress(float amount) {
         amount = Mathf.Clamp01(amount);
         progressBar.fillAmount = amount;
-        display.text = ((int)(amount * 100))  + "%";
+        display.text = ((int)(amount * 100)).ToString();
     }
 }

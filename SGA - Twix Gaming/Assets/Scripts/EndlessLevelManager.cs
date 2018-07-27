@@ -25,6 +25,7 @@ public class EndlessLevelManager : MonoBehaviour {
     [SerializeField] private MultiText multiTexts;
     [SerializeField] private Score score;
     [SerializeField] private AI ai;
+    [SerializeField] private TargetsGenerator targetGenerator;
 
     [SerializeField] public OnLevelBegin onLevelBegin;
     [SerializeField] public OnLevelLose onLevelLose;
@@ -36,15 +37,18 @@ public class EndlessLevelManager : MonoBehaviour {
 
     private void Awake()
     {
-        onLevelBegin = new OnLevelBegin();
-        onLevelLose = new OnLevelLose();
-        onLevelEnd = new OnLevelEnd();
-        defend.GetDestructible().onSimpleDeath.AddListener(DefenseLost);
+        if(onLevelBegin == null)
+            onLevelBegin = new OnLevelBegin();
+        if (onLevelLose == null)
+            onLevelLose = new OnLevelLose();
+        if (onLevelEnd == null)
+            onLevelEnd = new OnLevelEnd();
     }
 
     private void Start()
     {
         StartCoroutine(StartDelayed());
+        defend.GetDestructible().onSimpleDeath.AddListener(DefenseLost);
     }
 
     private IEnumerator StartDelayed()
@@ -56,6 +60,7 @@ public class EndlessLevelManager : MonoBehaviour {
         }
         onLevelBegin.Invoke();
         score.InitScore();
+        targetGenerator.InitTargets();
     }
     
 

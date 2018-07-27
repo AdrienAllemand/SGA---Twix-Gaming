@@ -23,10 +23,12 @@ public class Destructible : MonoBehaviour {
     public OnTakeDamage onTakeDamage = new OnTakeDamage();
 
     [SerializeField]
-    public OnDeath onDeath = new OnDeath();
-    public UnityEvent onSimpleDeath = new UnityEvent();
+    public OnDeath onDeath;
+    public UnityEvent onSimpleDeath;
 
-
+    public AudioSource audioSourceDeath;
+    public AudioSource audioSourceHit;
+    
     [SerializeField] private ADR_GUIProgressBar progressBarre;
     [SerializeField] private int maxhp = 100;
     [SerializeField] private int hp = 100;
@@ -35,12 +37,23 @@ public class Destructible : MonoBehaviour {
     [SerializeField] private bool destroyOnDeath = false;
     [SerializeField] private float destroyOnDeathDelay = 0;
 
+    private void Awake() {
+        if(onDeath == null)
+            onDeath = new OnDeath();
+        if (onSimpleDeath == null)
+            onSimpleDeath = new UnityEvent();
+    }
+
     void Start() {
         GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.Continuous;
         hp = maxhp;
     }
 
     public void TakeDamage(Damager damager, ContactPoint contact) {
+        
+        if (audioSourceHit != null) {
+            audioSourceHit.Play();
+        }
 
         onTakeDamage.Invoke(this, damager);
         hp -= damager.getDamage();
@@ -50,15 +63,10 @@ public class Destructible : MonoBehaviour {
         }
 
         if (hp <= 0) {
-            onDeath.Invoke(this, damager);
+            Die(damager);
             if (deathPrefab != null) {
                 Instantiate(deathPrefab, contact.point, Quaternion.Euler(contact.normal));
             }
-
-            if (destroyOnDeath) {
-                Destroy(this.gameObject, destroyOnDeathDelay);
-            }
-
         }
     }
 
@@ -80,18 +88,24 @@ public class Destructible : MonoBehaviour {
 
         if (hp <= 0)
         {
-            onDeath.Invoke(this, damager);
-            onSimpleDeath.Invoke();
+            Die(damager);
             if (deathPrefab != null)
             {
                 Instantiate(deathPrefab, contact, Quaternion.identity);
             }
 
-            if (destroyOnDeath)
-            {
-                Destroy(this.gameObject, destroyOnDeathDelay);
-            }
+        }
+    }
 
+    public void Die(Damager damager) {
+        onDeath.Invoke(this, damager);
+        onSimpleDeath.Invoke();
+
+        if(audioSourceDeath != null) {
+            audioSourceDeath.Play();
+        }
+        if (destroyOnDeath) {
+            Destroy(this.gameObject, destroyOnDeathDelay);
         }
     }
 
