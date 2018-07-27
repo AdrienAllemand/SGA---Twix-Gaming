@@ -63,9 +63,10 @@ public class alienAI : MonoBehaviour {
     }
 
     public void Death(Destructible d , Damager killer) {
-            animator.SetTrigger("Die");
-            score.addScore(10);
-            Destroy(nav);
+        animator.SetTrigger("Die");
+        score.addScore(10);
+        Destroy(nav);
+        isdead = true;
     }
 
     public void GiveDamage()

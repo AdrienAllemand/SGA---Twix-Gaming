@@ -6,8 +6,10 @@ using UnityEngine.UI;
 
 public class AI : MonoBehaviour {
 
-    [SerializeField]
-    public GameObject alienPrefab;
+    [SerializeField] public GameObject alienPrefab;
+    [SerializeField] public Color smallEnemyColor;
+    [SerializeField] public Color bigEnemyColor;
+
     public DefendMe[] defend;
     public Score score;
 
