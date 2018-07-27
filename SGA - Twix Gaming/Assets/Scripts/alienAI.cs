@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
+
 
 public class alienAI : MonoBehaviour {
 
@@ -23,6 +25,12 @@ public class alienAI : MonoBehaviour {
     [SerializeField] float distance = 1000;
     public bool isdead = false;
     public Score score;
+    public UnityEvent DestroyEvent;
+
+    private void Awake()
+    {
+        DestroyEvent = new UnityEvent();
+    }
 
     private void Start() {
         nav = GetComponent<NavMeshAgent>();
@@ -82,5 +90,10 @@ public class alienAI : MonoBehaviour {
         rb.AddForce((- collision.contacts[0].normal) * 25f, ForceMode.Impulse);
         Debug.DrawRay(collision.contacts[0].point, collision.contacts[0].normal, Color.white);
         //rb.AddExplosionForce(explosionForce, collision.contacts[0].point, explosionRadius, explosionUpwardModifier);
+    }
+
+    public void OnDestroy()
+    {
+        DestroyEvent.Invoke();
     }
 }

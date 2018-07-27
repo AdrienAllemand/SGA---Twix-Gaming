@@ -14,6 +14,7 @@ public class OnDeath : UnityEvent<Destructible, Damager> {
 
 }
 
+
 public class Destructible : MonoBehaviour {
     
     public int layerNo = 0;
@@ -23,6 +24,7 @@ public class Destructible : MonoBehaviour {
 
     [SerializeField]
     public OnDeath onDeath = new OnDeath();
+    public UnityEvent onSimpleDeath = new UnityEvent();
 
 
     [SerializeField] private ADR_GUIProgressBar progressBarre;
@@ -79,6 +81,7 @@ public class Destructible : MonoBehaviour {
         if (hp <= 0)
         {
             onDeath.Invoke(this, damager);
+            onSimpleDeath.Invoke();
             if (deathPrefab != null)
             {
                 Instantiate(deathPrefab, contact, Quaternion.identity);
