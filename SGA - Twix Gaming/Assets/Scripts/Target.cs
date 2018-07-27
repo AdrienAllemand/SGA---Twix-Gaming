@@ -18,16 +18,27 @@ public class Target : MonoBehaviour {
     public float timeToShoot = 30f;
     public float timerToShoot = 0f;
     public int pointsValue = 1000;
+    public Destructible target;
+    public Damager damager;
 
 
-    [SerializeField] public OnTargetHit onTargetHit = new OnTargetHit();
+    [SerializeField] public OnTargetHit onTargetHit;
 
-    [SerializeField] public OnTargetShoot onTargetShoot = new OnTargetShoot();
+    [SerializeField] public OnTargetShoot onTargetShoot;
 
     [SerializeField] private Animator anim;
-    
+
+    public void Awake() {
+        if (onTargetHit == null)
+            onTargetHit = new OnTargetHit();
+        if (onTargetShoot == null)
+            onTargetShoot = new OnTargetShoot();
+    }
+
     public void Start() {
         anim = GetComponent<Animator>();
+        target = GetComponent<Destructible>();
+        damager = GetComponent<Damager>();
     }
 
     public void Update() {
@@ -56,7 +67,7 @@ public class Target : MonoBehaviour {
         
     }
 
-    public void Shoot() {
+    public void LazerShoot() {
         onTargetShoot.Invoke();
     }
 }
