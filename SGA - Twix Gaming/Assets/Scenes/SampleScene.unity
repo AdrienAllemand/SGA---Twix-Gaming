@@ -3164,8 +3164,9 @@ GameObject:
   - component: {fileID: 577854380}
   - component: {fileID: 577854379}
   - component: {fileID: 577854378}
+  - component: {fileID: 577854382}
   m_Layer: 0
-  m_Name: Score
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3313,6 +3314,55 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &577854382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 577854377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6275ad069e82c7439d347cee88b2a49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multiTexts: {fileID: 577854378}
+  score: {fileID: 577854380}
+  ai: {fileID: 1780174193}
+  onLevelBegin:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1780174193}
+        m_MethodName: StartSpawn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: OnLevelBegin, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  onLevelLose:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1780174193}
+        m_MethodName: StopSpawn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: OnLevelLose, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  onLevelEnd:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: OnLevelEnd, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  startDelay: 10
 --- !u!4 &585753256 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4777723848738034, guid: 9e404949d8e4e0547b984a6eb1adb7e8,
@@ -7413,6 +7463,10 @@ Prefab:
       propertyPath: m_Name
       value: Target
       objectReference: {fileID: 0}
+    - target: {fileID: 1347247343640962, guid: 2ca21a2fa60628f4793201919df51fa6, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ca21a2fa60628f4793201919df51fa6, type: 2}
   m_IsPrefabAsset: 0
@@ -8837,9 +8891,13 @@ MonoBehaviour:
     type: 2}
   smallEnemyColor: {r: 0, g: 0, b: 0, a: 0}
   bigEnemyColor: {r: 0, g: 0, b: 0, a: 0}
+  enemies: []
   defend:
   - {fileID: 550780253}
   score: {fileID: 577854380}
+  TimeToSpawn: 5
+  minSize: 2
+  maxSize: 4
 --- !u!4 &1780174194
 Transform:
   m_ObjectHideFlags: 0

@@ -11,12 +11,16 @@ public class Score : MonoBehaviour {
     private void Start() {
         mt = GetComponent<MultiText>();
         audioSource = GetComponent<AudioSource>();
+    }
+
+    public void InitScore()
+    {
+        score = 0;
         mt.SetTexts("0");
     }
 
     public void addScore(int points)
     {
-        Debug.Log("Score is adding " + points + " points !");
         score += Mathf.Max(0, points);
         audioSource.Play();
         mt.SetTexts(score.ToString());
