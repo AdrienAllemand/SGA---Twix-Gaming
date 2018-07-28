@@ -60,12 +60,16 @@ public class EndlessLevelManager : MonoBehaviour {
     {
         for(int i = 0; i < startDelay; i++)
         {
-            multiTextsScores.SetTexts(((int)startDelay - i).ToString());
+            multiTextsAnnouncements.SetTexts(((int)startDelay - i).ToString());
             yield return new WaitForSeconds(1);
         }
+
+        multiTextsAnnouncements.SetTexts("Fight !");
         onLevelBegin.Invoke();
         score.InitScore();
         targetGenerator.InitTargets(defend.GetDestructible());
+        yield return new WaitForSeconds(2);
+        multiTextsAnnouncements.SetTexts("");
     }
     
 
@@ -73,10 +77,39 @@ public class EndlessLevelManager : MonoBehaviour {
     {
         Debug.Log("Level Manager : Game Is Lost !");
         onLevelLose.Invoke();
-        multiTextsScores.SetTexts("");
+        multiTextsAnnouncements.SetTexts("");
         endingMenu.enableGameOver(score.score);
     }
 
+    float timer = 0;
+    float incrementTime = 60;
+    int level = 0;
+    private void Update() {
+        timer += Time.deltaTime;
+        if(timer >= incrementTime) {
+            timer -= incrementTime;
 
+            incrementDifficulty();
+        }
+    }
+
+    private void incrementDifficulty() {
+        DisplayMessageCoroutine("Level " + level, 4);
+
+        ai.TimeToSpawn *= 0.9f;
+        targetGenerator.targetsScale *= 0.9f;
+        if(level % 3 == 0) {
+            targetGenerator.SpawnTarget();
+        }
+    }
+
+    IEnumerator DisplayMessageCoroutine(string s, float t) {
+
+        multiTextsAnnouncements.SetTexts(s);
+        yield return new WaitForSeconds(t);
+
+        multiTextsAnnouncements.SetTexts("");
+
+    }
 }
 

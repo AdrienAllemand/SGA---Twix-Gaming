@@ -19,12 +19,14 @@ public class AI : MonoBehaviour {
     public float maxSize = 4;
     public float spawnRadius = 30;
     bool stop = false;
+    public int nbSpawned = 0;
 
     private void Start() {
         enemies = new List<alienAI>();
     }
 
     public void SpawnOne() {
+        nbSpawned++;
         Vector3 pos = Random.onUnitSphere;
         pos.y = 0;
         pos.Normalize();
