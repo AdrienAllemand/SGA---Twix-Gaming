@@ -7109,6 +7109,7 @@ GameObject:
   - component: {fileID: 577854378}
   - component: {fileID: 577854382}
   - component: {fileID: 577854383}
+  - component: {fileID: 577854384}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -7128,10 +7129,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   texts:
-  - {fileID: 123119862}
-  - {fileID: 978281926}
-  - {fileID: 907620860}
-  - {fileID: 934439053}
   - {fileID: 872468194}
   - {fileID: 1595179382}
   - {fileID: 93259817}
@@ -7271,7 +7268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiTextsScores: {fileID: 577854378}
-  multiTextsAnnouncements: {fileID: 0}
+  multiTextsAnnouncements: {fileID: 577854384}
   score: {fileID: 577854380}
   ai: {fileID: 1780174193}
   targetGenerator: {fileID: 207864737}
@@ -7363,6 +7360,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &577854384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 577854377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20ea16eb07a6bb44f804c7fc6f1d595f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  texts:
+  - {fileID: 123119862}
+  - {fileID: 978281926}
+  - {fileID: 907620860}
+  - {fileID: 934439053}
 --- !u!1001 &581838239
 Prefab:
   m_ObjectHideFlags: 0
@@ -18633,6 +18646,10 @@ Prefab:
       propertyPath: m_Name
       value: Target
       objectReference: {fileID: 0}
+    - target: {fileID: 1805620349854580, guid: 4ad68fd132895734e867eed1e1ddacca, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ad68fd132895734e867eed1e1ddacca, type: 2}
   m_IsPrefabAsset: 0
@@ -20402,7 +20419,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 27, y: 94}
+  m_AnchoredPosition: {x: -41, y: 94}
   m_SizeDelta: {x: 1500, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1595179382
@@ -22359,6 +22376,7 @@ MonoBehaviour:
   minSize: 2
   maxSize: 4
   spawnRadius: 30
+  nbSpawned: 0
 --- !u!4 &1780174194
 Transform:
   m_ObjectHideFlags: 0
