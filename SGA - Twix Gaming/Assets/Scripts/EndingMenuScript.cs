@@ -10,7 +10,7 @@ public class EndingMenuScript : MonoBehaviour {
 
     private MultiText mt;
 
-    private void Start()
+    private void Awake()
     {
         mt = GetComponent<MultiText>();
     }

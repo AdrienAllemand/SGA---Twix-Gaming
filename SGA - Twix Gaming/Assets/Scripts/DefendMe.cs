@@ -9,7 +9,7 @@ public class DefendMe : MonoBehaviour {
 
     Destructible destructible;
 
-    private void Start()
+    void Awake()
     {
         destructible = GetComponent<Destructible>();
     }

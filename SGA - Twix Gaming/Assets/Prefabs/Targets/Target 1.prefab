@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 54935961052627502}
   - component: {fileID: 95507861725735896}
   - component: {fileID: 65610756709273568}
+  - component: {fileID: 114513302053270056}
   m_Layer: 0
   m_Name: Target 1
   m_TagString: Untagged
@@ -405,6 +406,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114513302053270056
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1347247343640962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce6d74ccaeeea844091663c2dee95e3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerNo: 0
+  damage: 30
 --- !u!114 &114635922385732624
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -474,7 +488,9 @@ MonoBehaviour:
   timeToShoot: 30
   timerToShoot: 0
   pointsValue: 1000
-  anim: {fileID: 0}
+  attack: {fileID: 0}
+  damager: {fileID: 114513302053270056}
+  anim: {fileID: 95507861725735896}
 --- !u!114 &114775375654043786
 MonoBehaviour:
   m_ObjectHideFlags: 1

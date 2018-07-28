@@ -16,6 +16,9 @@ public class alienAI : MonoBehaviour {
     [SerializeField] private float explosionForce = 1200f;
     [SerializeField] private float explosionRadius = 1f;
     [SerializeField] private float explosionUpwardModifier = .5f;
+
+    [SerializeField] private float ejectForce = 20f;
+    
     [SerializeField] private int damage = 5;
     [SerializeField] private float breakDistance = 1.5f;
     bool walking = true;
@@ -26,6 +29,8 @@ public class alienAI : MonoBehaviour {
     public bool isdead = false;
     public Score score;
     public UnityEvent DestroyEvent;
+
+    public AI ai;
 
     private void Awake()
     {
@@ -71,6 +76,7 @@ public class alienAI : MonoBehaviour {
     }
 
     public void Death(Destructible d , Damager killer) {
+        DestroyEvent.Invoke();
         animator.SetTrigger("Die");
         score.addScore(10);
         Destroy(nav);
@@ -79,6 +85,7 @@ public class alienAI : MonoBehaviour {
 
     public void GiveDamage()
     {
+        Debug.Log("Alien: hitting crystal");
         if(!isdead)
             defendMe.GetDestructible().TakeDamage(damager, footTip.position);
     }
@@ -87,13 +94,18 @@ public class alienAI : MonoBehaviour {
 
         Rigidbody rb = this.gameObject.GetComponent<Rigidbody>();
         rb.useGravity = true;
-        rb.AddForce((- collision.contacts[0].normal) * 25f, ForceMode.Impulse);
+        rb.AddForce((- collision.contacts[0].normal) * ejectForce, ForceMode.Impulse);
         Debug.DrawRay(collision.contacts[0].point, collision.contacts[0].normal, Color.white);
         //rb.AddExplosionForce(explosionForce, collision.contacts[0].point, explosionRadius, explosionUpwardModifier);
     }
 
-    public void OnDestroy()
-    {
-        DestroyEvent.Invoke();
+    public void KillWithNoScore() {
+        animator.SetTrigger("Die");
+        Destroy(this.gameObject, 3);
+        Destroy(this);
+    }
+
+    private void OnDestroy() {
+        ai.RemoveAI(this);
     }
 }
