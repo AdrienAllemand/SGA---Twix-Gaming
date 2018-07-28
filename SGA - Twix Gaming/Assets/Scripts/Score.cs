@@ -7,6 +7,7 @@ public class Score : MonoBehaviour {
     public int score = 0;
     AudioSource audioSource;
     MultiText mt;
+    bool isEnd = false;
 
     private void Start() {
         mt = GetComponent<MultiText>();
@@ -21,9 +22,15 @@ public class Score : MonoBehaviour {
 
     public void addScore(int points)
     {
-        score += Mathf.Max(0, points);
-        audioSource.Play();
-        mt.SetTexts(score.ToString());
+        if (!isEnd) {
+            score += Mathf.Max(0, points);
+            audioSource.Play();
+            mt.SetTexts(score.ToString());
+        }
+    }
+
+    public void setIsEnd(bool b) {
+        isEnd = b;
     }
 
 

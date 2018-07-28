@@ -12,9 +12,11 @@ public class TargetsGenerator : MonoBehaviour {
     [SerializeField] private float timeToDelaySpawn = 3;
     [SerializeField] public int targetsToSpawn = 3;
     [SerializeField] public float targetsScale = 1;
+    [SerializeField] public float targetsTimeToShoot = 30f;
     [SerializeField] public Destructible attackTarget;
 
-    private List<Target> targets;
+    private List<Target> targets = new List<Target>();
+    bool stop = false;
     
     public void InitTargets(Destructible attackTarget) {
         this.attackTarget = attackTarget;
@@ -34,8 +36,13 @@ public class TargetsGenerator : MonoBehaviour {
         Target t = targetObj.GetComponent<Target>();
         t.s = score;
         t.attack = attackTarget;
+        t.timerToShoot = targetsTimeToShoot;
         t.onTargetHit.AddListener(CoroutineCall);
-        
+        t.onTargetShoot.AddListener(CoroutineCall);
+        t.onTargetDestroy.AddListener(RemoveTarget);
+        targets.Add(t);
+
+
     }
 	
 	// Update is called once per frame
@@ -46,9 +53,23 @@ public class TargetsGenerator : MonoBehaviour {
     public void CoroutineCall() {
         StartCoroutine(DelayedSpawn());
     }
+    
+    public void DeleteAllTargets() {
+        stop = true;
+        foreach(Target t in targets) {
+            if(t != null)
+            t.KillTargetNoPoints();
+        }
+    }
+
+    public void RemoveTarget(Target t) {
+        targets.Remove(t);
+    }
 
     public IEnumerator DelayedSpawn() {
         yield return new WaitForSeconds(timeToDelaySpawn);
-        SpawnTarget();
+        if (!stop) {
+            SpawnTarget();
+        }
     }
 }

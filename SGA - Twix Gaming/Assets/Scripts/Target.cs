@@ -7,6 +7,10 @@ using UnityEngine.Events;
 public class OnTargetHit : UnityEvent {
 
 }
+[SerializeField]
+public class OnTargetDestroy : UnityEvent<Target> {
+
+}
 
 [SerializeField]
 public class OnTargetShoot : UnityEvent {
@@ -34,6 +38,7 @@ public class Target : MonoBehaviour {
     [SerializeField] public OnTargetHit onTargetHit;
 
     [SerializeField] public OnTargetShoot onTargetShoot;
+    [SerializeField] public OnTargetDestroy onTargetDestroy;
 
     [SerializeField] private Animator anim;
 
@@ -42,6 +47,8 @@ public class Target : MonoBehaviour {
             onTargetHit = new OnTargetHit();
         if (onTargetShoot == null)
             onTargetShoot = new OnTargetShoot();
+        if (onTargetDestroy == null)
+            onTargetDestroy = new OnTargetDestroy();
     }
 
     public void Start() {
@@ -66,11 +73,12 @@ public class Target : MonoBehaviour {
         if ((ai = other.gameObject.GetComponent<alienAI>()) != null && ai.isdead) {
 
             //anim.SetTrigger("die");
-            Destroy(this.gameObject,3);
+            Destroy(this.gameObject,1);
             anim.SetTrigger("die");
             s.addScore(pointsValue);
             //Debug.Log("Target Hit");
             onTargetHit.Invoke();
+            onTargetDestroy.Invoke(this);
             if (soundIsHit != null) {
                 soundIsHit.Play();
             }
@@ -88,8 +96,6 @@ public class Target : MonoBehaviour {
     }
 
     public void LazerShoot() {
-        onTargetShoot.Invoke();
-
         if (soundWarmUp != null && isShooting) {
             soundWarmUp.Stop();
         }
@@ -97,6 +103,8 @@ public class Target : MonoBehaviour {
             soundShoot.Play();
         }
         if (attack != null) {
+
+            Debug.Log("Target: This is gonna hurt !");
 
             RaycastHit hit;
             if(Physics.Raycast(transform.position, attack.transform.position - transform.position, out hit, 300)) {
@@ -106,5 +114,16 @@ public class Target : MonoBehaviour {
             }
 
         }
+        onTargetShoot.Invoke();
+        onTargetDestroy.Invoke(this);
+        Destroy(GetComponent<Collider>());
+        Destroy(this.gameObject,1f);
     }
+
+    public void KillTargetNoPoints() {
+        Destroy(this.gameObject, 1);
+        anim.SetTrigger("die");
+        Destroy(this);
+    }
+
 }

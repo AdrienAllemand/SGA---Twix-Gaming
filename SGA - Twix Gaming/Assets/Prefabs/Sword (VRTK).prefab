@@ -792,8 +792,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd84c11e7f1ac994dbf96ea2fd279d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 0
-  velocityTreshold: 0.01
   mr: {fileID: 23431996410320498}
 --- !u!114 &114398022421399170
 MonoBehaviour:

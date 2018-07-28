@@ -15,16 +15,22 @@ public class OnDeath : UnityEvent<Destructible, Damager> {
 }
 
 
+[SerializeField]
+public class OnSimpleDeath : UnityEvent {
+
+}
+
+
 public class Destructible : MonoBehaviour {
     
     public int layerNo = 0;
 
     [SerializeField]
-    public OnTakeDamage onTakeDamage = new OnTakeDamage();
+    public OnTakeDamage onTakeDamage;
 
     [SerializeField]
     public OnDeath onDeath;
-    public UnityEvent onSimpleDeath;
+    public OnSimpleDeath onSimpleDeath;
 
     public AudioSource audioSourceDeath;
     public AudioSource audioSourceHit;
@@ -36,12 +42,16 @@ public class Destructible : MonoBehaviour {
     [SerializeField] private GameObject deathPrefab;
     [SerializeField] private bool destroyOnDeath = false;
     [SerializeField] private float destroyOnDeathDelay = 0;
+    bool isDead = false;
 
-    private void Awake() {
+    void Awake() {
         if(onDeath == null)
             onDeath = new OnDeath();
         if (onSimpleDeath == null)
-            onSimpleDeath = new UnityEvent();
+            onSimpleDeath = new OnSimpleDeath();
+        if(onTakeDamage == null) {
+            onTakeDamage = new OnTakeDamage();
+        }
     }
 
     void Start() {
@@ -51,17 +61,31 @@ public class Destructible : MonoBehaviour {
 
     public void TakeDamage(Damager damager, ContactPoint contact) {
         
-        if (audioSourceHit != null) {
-            audioSourceHit.Play();
+        if(! isDead) {
+
+            // Damage
+            hp -= damager.getDamage();
+
+            //Audio
+            if (audioSourceHit != null) {
+                audioSourceHit.Play();
+            }
+            //Video
+            if (progressBarre != null) {
+                progressBarre.setProgress((float)hp / (float)maxhp);
+            }
+
+            // event calling
+            onTakeDamage.Invoke(this, damager);
+
+            // particles
+            if (hitPrefab != null) {
+                Instantiate(hitPrefab, contact.point, Quaternion.Euler(contact.normal));
+            }
         }
 
-        onTakeDamage.Invoke(this, damager);
-        hp -= damager.getDamage();
 
-        if(hitPrefab != null) {
-            Instantiate(hitPrefab, contact.point, Quaternion.Euler(contact.normal));
-        }
-
+        // pas de else ici 
         if (hp <= 0) {
             Die(damager);
             if (deathPrefab != null) {
@@ -73,19 +97,30 @@ public class Destructible : MonoBehaviour {
     public void TakeDamage(Damager damager, Vector3 contact)
     {
 
-        if(progressBarre != null)
-        {
-            progressBarre.setProgress((float)hp / (float)maxhp);
+
+        if (!isDead) {
+            // Damage
+            hp -= damager.getDamage();
+
+            //Audio
+            if (audioSourceHit != null) {
+                audioSourceHit.Play();
+            }
+            //Video
+            if (progressBarre != null) {
+                progressBarre.setProgress((float)hp / (float)maxhp);
+            }
+
+            // event calling
+            onTakeDamage.Invoke(this, damager);
+
+            // particles
+            if (hitPrefab != null) {
+                Instantiate(hitPrefab, contact, Quaternion.identity);
+            }
         }
 
-        onTakeDamage.Invoke(this, damager);
-        hp -= damager.getDamage();
-
-        if (hitPrefab != null)
-        {
-            Instantiate(hitPrefab, contact, Quaternion.identity);
-        }
-
+        // pas de else ici 
         if (hp <= 0)
         {
             Die(damager);
@@ -98,24 +133,17 @@ public class Destructible : MonoBehaviour {
     }
 
     public void Die(Damager damager) {
-        onDeath.Invoke(this, damager);
-        onSimpleDeath.Invoke();
+        if (!isDead) {
+            isDead = true;
+            onDeath.Invoke(this, damager);
+            onSimpleDeath.Invoke();
 
-        if(audioSourceDeath != null) {
-            audioSourceDeath.Play();
+            if (audioSourceDeath != null) {
+                audioSourceDeath.Play();
+            }
+            if (destroyOnDeath) {
+                Destroy(this.gameObject, destroyOnDeathDelay);
+            }
         }
-        if (destroyOnDeath) {
-            Destroy(this.gameObject, destroyOnDeathDelay);
-        }
-    }
-
-    public void TakeHeal(int amount)
-    {
-        if(hp > 0)
-        {
-
-            hp += amount;
-        }
-    }
-    
+    }  
 }
