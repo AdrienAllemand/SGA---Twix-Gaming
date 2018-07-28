@@ -30,13 +30,13 @@ public class TargetsGenerator : MonoBehaviour {
         Vector3 position = Random.onUnitSphere * Random.Range(minDistance, maxDistance);
         position = new Vector3(position.x, Mathf.Abs(position.y),position.z);
         targetObj.transform.position = position;
-        targetObj.transform.LookAt(transform.position);
+        targetObj.transform.LookAt(transform.position,Vector3.down);
         targetObj.transform.localScale *= targetsScale;
 
         Target t = targetObj.GetComponent<Target>();
         t.s = score;
         t.attack = attackTarget;
-        t.timerToShoot = targetsTimeToShoot;
+        t.timeToShoot = targetsTimeToShoot;
         t.onTargetHit.AddListener(CoroutineCall);
         t.onTargetShoot.AddListener(CoroutineCall);
         t.onTargetDestroy.AddListener(RemoveTarget);
