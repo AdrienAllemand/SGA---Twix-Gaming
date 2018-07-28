@@ -35,6 +35,7 @@ public class EndlessLevelManager : MonoBehaviour {
     [SerializeField] public OnLevelBegin onLevelBegin;
     [SerializeField] public OnLevelLose onLevelLose;
     [SerializeField] public OnLevelEnd onLevelEnd;
+    bool stop = false;
 
 
     [SerializeField] public float startDelay = 10;
@@ -75,18 +76,20 @@ public class EndlessLevelManager : MonoBehaviour {
 
     private void DefenseLost()
     {
+        stop = true;
         Debug.Log("Level Manager : Game Is Lost !");
         onLevelLose.Invoke();
         multiTextsAnnouncements.SetTexts("");
         endingMenu.enableGameOver(score.score);
+        defend.GetComponent<Animator>().SetTrigger("die");
     }
 
     float timer = 0;
     float incrementTime = 60;
-    int level = 0;
+    public int level = 0;
     private void Update() {
         timer += Time.deltaTime;
-        if(timer >= incrementTime) {
+        if(!stop && timer >= incrementTime) {
             timer -= incrementTime;
 
             incrementDifficulty();
@@ -94,11 +97,12 @@ public class EndlessLevelManager : MonoBehaviour {
     }
 
     private void incrementDifficulty() {
-        DisplayMessageCoroutine("Level " + level, 4);
+        StartCoroutine(DisplayMessageCoroutine("Level UP : " + level, 5));
 
         ai.TimeToSpawn *= 0.9f;
         targetGenerator.targetsScale *= 0.9f;
-        if(level % 3 == 0) {
+        targetGenerator.targetsTimeToShoot *= 0.9f;
+        if (level % 3 == 0) {
             targetGenerator.SpawnTarget();
         }
     }
