@@ -106,6 +106,6 @@ public class alienAI : MonoBehaviour {
     }
 
     private void OnDestroy() {
-        ai.RemoveAI(this);
+        //ai.RemoveAI(this);
     }
 }

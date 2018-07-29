@@ -97,6 +97,7 @@ public class EndlessLevelManager : MonoBehaviour {
     }
 
     private void incrementDifficulty() {
+        level++;
         StartCoroutine(DisplayMessageCoroutine("Level UP : " + level, 5));
 
         ai.TimeToSpawn *= 0.9f;
